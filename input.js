@@ -1,4 +1,5 @@
 let connection;
+const {up,down,left,right, snek, speed} = require('./constants');
 
 const setupInput = function(conn) {
   connection = conn;
@@ -12,15 +13,12 @@ const setupInput = function(conn) {
 
 const handleUserInput = function(input) {
   if (input ===  '\u0003') process.exit();
-  if (input === 'w') connection.write("Move: up");
-  if (input === 's') connection.write('Move: down')
-  if (input === 'a') connection.write('Move: left');
-  if (input === 'd') connection.write('Move: right');
-  if (input === 'z') connection.write('Say: SSSNEK');
-  if (input === 'x') connection.write('Say: I am Speed');
+  if (input === 'w') connection.write(up);
+  if (input === 's') connection.write(down);
+  if (input === 'a') connection.write(left);
+  if (input === 'd') connection.write(right);
+  if (input === 'z') connection.write(snek);
+  if (input === 'x') connection.write(speed);
 };
 
-module.exports = {
-  setupInput,
-  handleUserInput
-};
+module.exports = setupInput;
